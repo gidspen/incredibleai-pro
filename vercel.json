@@ -1,3 +1,13 @@
 {
-  "cleanUrls": false
+  "headers": [
+    {
+      "source": "/deals-page",
+      "headers": [
+        { "key": "Content-Type", "value": "text/html; charset=utf-8" }
+      ]
+    }
+  ],
+  "redirects": [
+    { "source": "/deals", "destination": "/deals-page", "permanent": false }
+  ]
 }
