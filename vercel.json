@@ -1,7 +1,8 @@
 {
   "cleanUrls": true,
-  "trailingSlash": true,
+  "trailingSlash": false,
   "rewrites": [
-    { "source": "/deals", "destination": "/deals/index.html" }
+    { "source": "/deals", "destination": "/deals/index.html" },
+    { "source": "/deals/", "destination": "/deals/index.html" }
   ]
 }
