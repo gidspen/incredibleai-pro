@@ -13,16 +13,16 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #080808;
-      --surface:   #101010;
-      --surface2:  #161616;
-      --border:    rgba(255,255,255,0.07);
-      --cream:     #F2EBD9;
-      --cream-dim: rgba(242,235,217,0.55);
-      --cream-sub: rgba(242,235,217,0.35);
+      --bg:        #F8F5EF;
+      --surface:   #FFFFFF;
+      --surface2:  #F0EDE4;
+      --border:    rgba(0,0,0,0.08);
+      --cream:     #1D1D1B;
+      --cream-dim: rgba(29,29,27,0.62);
+      --cream-sub: rgba(29,29,27,0.38);
       --gold:      #C9973A;
-      --gold-dim:  rgba(201,151,58,0.18);
-      --gold-glow: rgba(201,151,58,0.08);
+      --gold-dim:  rgba(201,151,58,0.14);
+      --gold-glow: rgba(201,151,58,0.06);
       --white:     #FFFFFF;
       --serif:     'Cormorant Garamond', Georgia, serif;
       --sans:      'Outfit', system-ui, sans-serif;
@@ -89,7 +89,7 @@
       transition: border-color 0.4s, background 0.4s, backdrop-filter 0.4s;
     }
     nav.scrolled {
-      background: rgba(8,8,8,0.85);
+      background: rgba(248,245,239,0.92);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-color: var(--border);
@@ -127,7 +127,7 @@
     .btn-nav {
       font-size: 0.78rem !important;
       font-weight: 500 !important;
-      color: var(--bg) !important;
+      color: #FFFFFF !important;
       background: var(--gold);
       padding: 9px 22px;
       border-radius: 3px;
@@ -135,7 +135,7 @@
       text-transform: uppercase !important;
       transition: opacity 0.2s !important;
     }
-    .btn-nav:hover { opacity: 0.85; color: var(--bg) !important; }
+    .btn-nav:hover { opacity: 0.85; color: #FFFFFF !important; }
 
     /* ── HERO ──────────────────────────────────────────────────── */
     .hero {
@@ -213,7 +213,7 @@
       align-items: center;
       gap: 10px;
       background: var(--gold);
-      color: var(--bg);
+      color: #FFFFFF;
       font-family: var(--sans);
       font-size: 0.85rem;
       font-weight: 600;
@@ -362,7 +362,7 @@
       border: 1px solid var(--border);
       border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.10);
     }
     .terminal-bar {
       background: var(--surface2);
@@ -395,7 +395,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 10px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
       font-size: 0.8rem;
     }
     .tx-row:last-child { border-bottom: none; }
@@ -419,9 +419,9 @@
       border: 1px solid rgba(201,151,58,0.2);
     }
     .tx-badge.done {
-      background: rgba(40,202,65,0.08);
-      color: #5eed72;
-      border: 1px solid rgba(40,202,65,0.15);
+      background: rgba(26,127,55,0.08);
+      color: #1a7f37;
+      border: 1px solid rgba(26,127,55,0.18);
     }
     .tx-badge svg { width: 9px; height: 9px; }
     .terminal-footer {
@@ -435,7 +435,7 @@
       font-size: 0.72rem;
       color: var(--cream-sub);
     }
-    .terminal-stat strong { color: #5eed72; font-weight: 500; }
+    .terminal-stat strong { color: #1a7f37; font-weight: 500; }
 
     /* ── FEATURES ─────────────────────────────────────────────── */
     .features { padding: 120px 0; background: var(--surface); }
@@ -557,7 +557,7 @@
       gap: 10px;
       width: 100%;
       background: var(--gold);
-      color: var(--bg);
+      color: #FFFFFF;
       font-family: var(--sans);
       font-size: 0.82rem;
       font-weight: 600;
@@ -671,7 +671,7 @@
       <ul class="nav-links">
         <li><a href="#how">How it works</a></li>
         <li><a href="#pricing">Pricing</a></li>
-        <li><a href="https://incrediblehospitalityco.com/ai/bookkeeper-account/" class="btn-nav">My Account</a></li>
+        <li><a href="/deals" class="btn-nav">Deal Hunter</a></li>
       </ul>
     </div>
   </nav>
@@ -981,7 +981,7 @@
           setTimeout(resolveNext, 1400);
         } else {
           setTimeout(() => {
-            document.querySelector('.terminal-footer .terminal-stat:last-child').style.color = '#5eed72';
+            document.querySelector('.terminal-footer .terminal-stat:last-child').style.color = '#1a7f37';
             document.querySelector('.terminal-footer .terminal-stat:last-child').textContent = '5 of 5 — Done';
           }, 400);
         }
