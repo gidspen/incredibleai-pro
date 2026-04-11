@@ -20,9 +20,9 @@
       --cream:     #1D1D1B;
       --cream-dim: rgba(29,29,27,0.62);
       --cream-sub: rgba(29,29,27,0.38);
-      --gold:      #C9973A;
-      --gold-dim:  rgba(201,151,58,0.14);
-      --gold-glow: rgba(201,151,58,0.06);
+      --gold:      #1E3A5F;
+      --gold-dim:  rgba(30,58,95,0.10);
+      --gold-glow: rgba(30,58,95,0.04);
       --white:     #FFFFFF;
       --serif:     'Cormorant Garamond', Georgia, serif;
       --sans:      'Outfit', system-ui, sans-serif;
@@ -62,12 +62,12 @@
     .orb-1 {
       width: 600px; height: 600px;
       top: -200px; left: -200px;
-      background: radial-gradient(circle, rgba(201,151,58,0.06) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(30,58,95,0.05) 0%, transparent 70%);
     }
     .orb-2 {
       width: 500px; height: 500px;
       bottom: 10%; right: -150px;
-      background: radial-gradient(circle, rgba(201,151,58,0.04) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(30,58,95,0.03) 0%, transparent 70%);
     }
 
     /* ── LAYOUT ────────────────────────────────────────────────── */
@@ -157,7 +157,7 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--gold);
-      border: 1px solid rgba(201,151,58,0.3);
+      border: 1px solid rgba(30,58,95,0.18);
       padding: 6px 14px;
       border-radius: 2px;
       margin-bottom: 40px;
@@ -414,9 +414,9 @@
       justify-content: center;
     }
     .tx-badge.ai {
-      background: rgba(201,151,58,0.12);
+      background: rgba(30,58,95,0.07);
       color: var(--gold);
-      border: 1px solid rgba(201,151,58,0.2);
+      border: 1px solid rgba(30,58,95,0.15);
     }
     .tx-badge.done {
       background: rgba(26,127,55,0.08);
@@ -482,14 +482,26 @@
 
     /* ── PRICING ──────────────────────────────────────────────── */
     .pricing { padding: 120px 0; }
-    .pricing-card {
-      max-width: 520px;
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
       margin: 60px auto 0;
+      max-width: 1000px;
+      text-align: left;
+    }
+    @media (max-width: 768px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+    .pricing-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 4px;
       overflow: hidden;
       position: relative;
+    }
+    .pricing-card--soon {
+      opacity: 0.92;
     }
     .pricing-card::before {
       content: '';
@@ -575,6 +587,71 @@
       color: var(--cream-sub);
       margin-top: 16px;
       letter-spacing: 0.03em;
+    }
+
+    /* ── NOTIFY FORM ──────────────────────────────────────────── */
+    .coming-soon-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cream-sub);
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+    .notify-form {
+      display: flex;
+      gap: 8px;
+      flex-direction: column;
+    }
+    .notify-row {
+      display: flex;
+      gap: 8px;
+    }
+    .notify-input {
+      flex: 1;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 12px 16px;
+      font-family: var(--sans);
+      font-size: 0.83rem;
+      font-weight: 300;
+      color: var(--cream);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .notify-input::placeholder { color: var(--cream-sub); }
+    .notify-input:focus { border-color: var(--gold); }
+    .notify-btn {
+      background: var(--gold);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 3px;
+      padding: 12px 20px;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+    .notify-btn:hover { opacity: 0.85; }
+    .notify-success {
+      font-size: 0.82rem;
+      color: #1a7f37;
+      padding: 12px 0 0;
+      display: none;
+      font-weight: 400;
     }
 
     /* ── CTA BAND ─────────────────────────────────────────────── */
@@ -883,34 +960,69 @@
   <!-- PRICING -->
   <section class="pricing" id="pricing">
     <div class="container" style="text-align:center">
-      <p class="section-label">Pricing</p>
-      <h2 class="section-title" style="margin: 0 auto 12px;">Simple. No surprises.</h2>
+      <p class="section-label">Products</p>
+      <h2 class="section-title" style="margin: 0 auto 12px;">Two AI agents.<br/>Built for hospitality operators.</h2>
       <p class="section-body" style="margin: 0 auto; text-align: center;">
-        One plan. One price. Cancel anytime.
+        One handles your books. One screens your deals. More coming.
       </p>
-      <div class="pricing-card">
-        <div class="pricing-top">
-          <div style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;">AI Bookkeeper Pro</div>
-          <div class="price-amount"><sup>$</sup>29</div>
-          <div class="price-period">per month — billed monthly, cancel anytime</div>
+      <div class="pricing-grid">
+
+        <!-- AI BOOKKEEPER -->
+        <div class="pricing-card">
+          <div class="pricing-top">
+            <div style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;">AI Bookkeeper — Available Now</div>
+            <div class="price-amount"><sup>$</sup>29</div>
+            <div class="price-period">per month — billed monthly, cancel anytime</div>
+          </div>
+          <ul class="pricing-features">
+            <li>Works with QuickBooks, Xero, Wave &amp; FreshBooks</li>
+            <li>Up to 10 bookkeeper runs per day</li>
+            <li>AI categorization with confidence scoring</li>
+            <li>Full run history and audit log</li>
+            <li>Chrome extension — no desktop app required</li>
+            <li>Email support</li>
+          </ul>
+          <div class="pricing-cta">
+            <a href="https://chrome.google.com/webstore" class="btn-full" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M2 10 L8 2 L14 10"/><path d="M8 2 L8 14"/>
+              </svg>
+              Add to Chrome — Start Free
+            </a>
+            <p class="pricing-note">Free to install. $29/month unlocks unlimited access.</p>
+          </div>
         </div>
-        <ul class="pricing-features">
-          <li>Works with QuickBooks, Xero, Wave &amp; FreshBooks</li>
-          <li>Up to 10 bookkeeper runs per day</li>
-          <li>AI categorization with confidence scoring</li>
-          <li>Full run history and audit log</li>
-          <li>Chrome extension — no desktop app required</li>
-          <li>Email support</li>
-        </ul>
-        <div class="pricing-cta">
-          <a href="https://chrome.google.com/webstore" class="btn-full" target="_blank" rel="noopener">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M2 10 L8 2 L14 10"/><path d="M8 2 L8 14"/>
-            </svg>
-            Add to Chrome — Start Free
-          </a>
-          <p class="pricing-note">Free to install. $29/month unlocks unlimited access.</p>
+
+        <!-- DEAL HUNTER -->
+        <div class="pricing-card pricing-card--soon">
+          <div class="pricing-top">
+            <div style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;">
+              Deal Hunter
+              <span class="coming-soon-badge">Coming Soon</span>
+            </div>
+            <div class="price-amount" style="font-size:2.6rem;color:var(--cream-dim);">Be First.</div>
+            <div class="price-period" style="margin-top:10px;">Get early access when Deal Hunter drops</div>
+          </div>
+          <ul class="pricing-features">
+            <li>Screens hotel &amp; micro resort listings automatically</li>
+            <li>Two-stage buy box — binary gate then full scoring</li>
+            <li>Hotel analysis: cap rate, RevPAR, zoning moat, SBA eligibility</li>
+            <li>Micro resort analysis: STR zoning, acreage, drive market, comps</li>
+            <li>Confidence scoring — PASS, FLAG, or UNCERTAIN on every deal</li>
+            <li>Results dashboard with every scan in one place</li>
+          </ul>
+          <div class="pricing-cta">
+            <form class="notify-form" id="notify-form">
+              <div class="notify-row">
+                <input type="email" class="notify-input" id="notify-email" placeholder="your@email.com" required />
+                <button type="submit" class="notify-btn">Notify Me</button>
+              </div>
+              <p class="pricing-note" style="margin-top:10px;">No spam. One email when it launches.</p>
+              <p class="notify-success" id="notify-success">You're on the list. We'll reach out when Deal Hunter drops.</p>
+            </form>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -997,6 +1109,36 @@
     }, { threshold: 0.4 });
     const terminal = document.querySelector('.terminal-card');
     if (terminal) terminalObserver.observe(terminal);
+
+    // Deal Hunter notify form
+    const notifyForm = document.getElementById('notify-form');
+    if (notifyForm) {
+      notifyForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('notify-email').value.trim();
+        const btn = notifyForm.querySelector('.notify-btn');
+        btn.textContent = '...';
+        btn.disabled = true;
+        try {
+          const res = await fetch('/api/notify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email })
+          });
+          if (res.ok) {
+            notifyForm.querySelector('.notify-row').style.display = 'none';
+            notifyForm.querySelector('.pricing-note').style.display = 'none';
+            document.getElementById('notify-success').style.display = 'block';
+          } else {
+            btn.textContent = 'Try again';
+            btn.disabled = false;
+          }
+        } catch {
+          btn.textContent = 'Try again';
+          btn.disabled = false;
+        }
+      });
+    }
   </script>
 </body>
 </html>
