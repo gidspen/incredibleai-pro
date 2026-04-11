@@ -18,40 +18,31 @@ export default async function handler(req) {
   }
 
   const apiKey = process.env.KIT_API_SECRET;
-  const tagId  = process.env.KIT_DEAL_HUNTER_TAG_ID || '18871785';
+  const tagId  = '18871785'; // Deal Hunter Early Access
 
-  if (!apiKey || !tagId) {
-    // Env vars not yet configured — log and succeed silently so the UI works
-    console.error('KIT_API_SECRET or KIT_DEAL_HUNTER_TAG_ID not set');
+  if (!apiKey) {
+    console.error('KIT_API_SECRET not set');
     return new Response(JSON.stringify({ ok: true }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     });
   }
 
-  // Create or update subscriber
-  const subRes = await fetch('https://api.convertkit.com/v3/subscribers', {
+  // Subscribe to tag — creates subscriber if new, tags if existing
+  const res = await fetch(`https://api.convertkit.com/v3/tags/${tagId}/subscribe`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ api_secret: apiKey, email_address: email }),
+    body: JSON.stringify({ api_secret: apiKey, email }),
   });
 
-  if (!subRes.ok) {
-    const txt = await subRes.text();
-    console.error('Kit subscriber create failed:', txt);
+  if (!res.ok) {
+    const txt = await res.text();
+    console.error('Kit tag subscribe failed:', txt);
     return new Response('Upstream error', { status: 502 });
   }
 
-  const { subscriber } = await subRes.json();
-
-  // Add "Deal Hunter Early Access" tag
-  await fetch(`https://api.convertkit.com/v3/tags/${tagId}/subscribe`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ api_secret: apiKey, email: email }),
-  });
-
-  return new Response(JSON.stringify({ ok: true, id: subscriber?.id }), {
+  const data = await res.json();
+  return new Response(JSON.stringify({ ok: true, id: data.subscription?.subscriber?.id }), {
     status: 200,
     headers: { 'Content-Type': 'application/json' },
   });
