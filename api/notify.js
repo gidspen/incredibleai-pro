@@ -18,7 +18,7 @@ export default async function handler(req) {
   }
 
   const apiKey = process.env.KIT_API_SECRET;
-  const tagId  = process.env.KIT_DEAL_HUNTER_TAG_ID;
+  const tagId  = process.env.KIT_DEAL_HUNTER_TAG_ID || '18871785';
 
   if (!apiKey || !tagId) {
     // Env vars not yet configured — log and succeed silently so the UI works
