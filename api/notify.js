@@ -36,13 +36,8 @@ export default async function handler(req) {
   });
 
   if (!res.ok) {
-    const txt = await res.text();
-    console.error('Kit status:', res.status);
-    console.error('Kit body:', txt);
-    return new Response(JSON.stringify({ error: true, status: res.status, detail: txt }), {
-      status: 502,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    console.error('Kit tag subscribe failed:', res.status);
+    return new Response('Upstream error', { status: 502 });
   }
 
   const data = await res.json();
