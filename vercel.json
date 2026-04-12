@@ -8,6 +8,7 @@
     }
   ],
   "redirects": [
-    { "source": "/deals", "destination": "/deals-page", "permanent": false }
+    { "source": "/deals", "destination": "/deals-page", "permanent": false },
+    { "source": "/privacy", "destination": "/privacy/", "permanent": true }
   ]
 }
